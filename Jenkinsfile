@@ -1,9 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('') {
-      steps {
-        echo 'first message'
+    stage('error') {
+      parallel {
+        stage('error') {
+          steps {
+            echo 'first message'
+          }
+        }
+        stage('seond') {
+          steps {
+            git 'https://github.com/ledging/cse.git'
+          }
+        }
       }
     }
   }
